@@ -1,0 +1,47 @@
+{#
+/**
+ * @file
+ * Default theme implementation with multiple parameters through APIs and custom vode get Search Result .
+ *
+ * Available variables:
+ * - recipes :This is an array which holds all recipe search result.
+ * - article: This is an array which holds all article search result.
+ * - community: This is an array which holds all community search result.
+ * - search: This is an array which holds all common value search result.
+ *  
+ * @ingroup themeable
+ */
+#}
+<style type="text/css">
+img{width: 200px;height: 200px;}
+li {
+    display: inline-block;
+    }
+</style>
+{# --Breadcrumbs html Start-- #}
+
+{{data|raw}}
+<div class="grid-box">
+
+<ul>
+{% for item in data %}
+    <li><a href="{{ item.alias }}">{{ item.name }}</a><br></li><br>
+
+{% endfor %}
+</ul>
+<ul>
+{% for item in data %}
+    <li>Product Name <a href="{{ item.node_url }}">{{ item.title }}</a><br>
+    <img src="{{ item.thumb }}"><br>
+    Category Name {{ item.tag }}<br>
+    Created At {{ item.created_date }}</li>
+
+{% endfor %}
+</ul>
+
+{% if count == 12%}
+<input type="hidden" id="articleSerachrwCount" value="1" name="articleSerachrwCount">
+<div class="loadmore"><a href="javascript:void(0);" id="gserachmorearticle" data-count="" class="primary-button hvr-ripple-out">{{'Load more article'|t}}</a></div>
+{% endif %}	
+</div>
+{# --Breadcrumbs html End -- #}

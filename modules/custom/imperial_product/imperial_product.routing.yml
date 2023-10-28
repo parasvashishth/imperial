@@ -1,0 +1,15 @@
+imperial_product.imperial_product:
+  path: '/product'
+  defaults:
+    _controller: '\Drupal\imperial_product\Controller\ProductController::fetch_parent'
+    _title: 'Welcome to My Module in Drupal 9'
+  requirements: 
+    _permission: 'access content'
+
+imperial_product.imperial_product_id:
+  path: '/product/{tid}'
+  defaults:
+    _controller: '\Drupal\imperial_product\Controller\ProductController::fetch_child'
+    _title: 'Welcome to My Module in Drupal 92'
+  requirements: 
+    _permission: 'access content'

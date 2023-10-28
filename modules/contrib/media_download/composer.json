@@ -1,0 +1,32 @@
+{
+    "name": "drupal/media_download",
+    "description": "Adds support for direct downloads of media entities when using their canonical path.",
+    "type": "drupal-module",
+    "license": "GPL-2.0-or-later",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    ],
+    "authors": [
+        {
+            "name": "Clay Freeman",
+            "email": "clay@librarymarket.com",
+            "role": "Maintainer"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "drupal/core": "^9.3 || ^10"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "enable-patching": true,
+        "patches": {}
+    }
+}

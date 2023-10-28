@@ -1,0 +1,58 @@
+{% include directory ~ '/templates/includes/header.html.twig' %}
+
+<section class="group-companies">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="group_left">
+                    {% if node.field_group_companies_content %}
+                        {{ node.field_group_companies_content.value|raw }}
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="group_right">
+                    {% if node.field_group_companies_image.entity %}
+                        {% set image_entity = node.field_group_companies_image.entity %}
+                        <img src="{{ file_url(image_entity.uri.value) }}" alt="{{ image_entity.alt }}" />
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="groupBoxSec">
+    <div class="container">
+        {% if node.field_group_company_wrapper.entity %}
+            {% for paragraph_item in node.field_group_company_wrapper %}
+                {% set paragraph_entity = paragraph_item.entity %}
+                {% if paragraph_entity.bundle == 'group_companies' %}
+                    <div class="row">
+                        <div class="col-md-8">  
+                            <div class="groupBoxLeft">
+                                {% if paragraph_entity.field_group_left_content %}
+                                    {{ paragraph_entity.field_group_left_content.value|raw }}
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="groupBoxRt">
+                                {% if paragraph_entity.field_group_right_image.entity %}
+                                   {% set media_entity = paragraph_entity.field_group_right_image.entity %}
+									{% if media_entity %}
+										{% set image_url = file_url(media_entity.field_media_image.entity.fileuri) %}
+										<img src="{{ image_url }}" alt="{{ media_entity.name[0].value }}" />
+									{% endif %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </div>
+</section>
+
+{% include directory ~ '/templates/includes/footer.html.twig' %}

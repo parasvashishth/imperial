@@ -1,0 +1,83 @@
+{% include directory ~ '/templates/includes/header.html.twig' %}
+
+<section class="sProdPg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="sProdPgImgPop">
+                    <div class="sProdPgImg">
+                        <div class="sProdPgImgs owl-carousel">
+                            {% if node.field_products_data.entity %}
+                                {% set paragraph_items = node.field_products_data %}
+                                {% for paragraph_item in paragraph_items %}
+                                    {% if paragraph_item.entity.field_products_images|length > 0 %}
+                                        {% for image_item in paragraph_item.entity.field_products_images %}
+                                            {% set media_entity = image_item.entity %}
+                                            {% if media_entity.bundle() == 'image' %}
+                                                {% if media_entity.hasField('field_media_image') %}
+                                                    {% set image_entity = media_entity.field_media_image.entity %}
+                                                    {% if image_entity %}
+                                                            <div class="sProdPgImgsBox">
+                                                                <img src="{{ file_url(image_entity.uri.value) }}" alt="{{ media_entity.field_media_image.alt }}" />
+                                                            </div>
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="merger_left sProdRt techSpec">
+                    <ul class="breadUl"> 
+                        <li><a href="https://imperialauto.in/products/">Products & Solutions</a></li>
+                        <li>{{ node.title.value }}</li>
+                    </ul>
+                    <h1 class="colorBlue mb-3">{{ node.title.value }}</h1>
+                    
+                      {{ node.body.value|raw }}
+                    <div class="accordion" id="accordionPanelsStayOpenExample">
+                        <h3>Applicable Industries</h3>
+
+                        <div class="applicable-industry-list">
+                            {# Check if the product node has the 'field_product_category' field #}
+                            {% if node.hasField('field_product_category') %}
+                                {# Get the selected categories for the current product #}
+                                {% set categories = node.field_product_category.entity %}
+                                
+                                {# Create an array to store unique term IDs #}
+                                {% set uniqueTermIds = [] %}
+                                
+                                {# Output the categories #}
+                                <ul>
+                                    {% for category in categories %}
+                                        {# Check if the term ID is not in the uniqueTermIds array,
+                                        the term name is not 'Products Category' or 'Automotive',
+                                        and there are no associated files/images with the term #}
+                                        {% if category.entity.id() not in uniqueTermIds 
+                                        and category.entity.label() not in ['Products Category','automotive.png']
+                                        and not category.entity.field_associated_files.entity %}
+                                            {# Add the term ID to the uniqueTermIds array #}
+                                            {% set uniqueTermIds = uniqueTermIds|merge([category.entity.id()]) %}
+                                            <li><a href="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': category.entity.id()}) }}">{{ category.entity.label() }}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+{% include directory ~ '/templates/includes/footer.html.twig' %}

@@ -1,0 +1,26 @@
+{% if paragraph.field_counters|length > 0 %}
+<section class="opportunity">
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="opportunity_right">
+				<div class="row">
+				    
+				    {% for key, item in paragraph.field_counters %}
+
+					<div class="col-lg-4 col-sm-6 col-6">
+						<div class="counter-numbers">
+							<div class="counters">
+								<div class="counting" data-count="{{item.entity.field_counter_number.value|raw }}"></div><span></span>
+							</div>
+							{{item.entity.field_counter_heading.value|raw }}
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</section>
+{% endif %}

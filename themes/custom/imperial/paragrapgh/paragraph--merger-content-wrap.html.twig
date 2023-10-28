@@ -1,0 +1,55 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="merger_left">
+            <h4>{{paragraph.field_merger_main_heading.value|raw}}</h4>
+            <div class="accordion" id="accordionExample">
+                    {% for key, item in paragraph.field_merger_left_repeater %}
+                    {% set entity = item.entity %}
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading{{ key }}">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ key }}" aria-expanded="true" aria-controls="collapse{{ key }}">
+                                {% if entity.field_merger_left_repeater_headi.value %}
+                                    {{ entity.field_merger_left_repeater_headi.value|raw }}
+                                {% endif %}
+                                </button>
+                            </h2>
+                            <div id="collapse{{ key }}" class="accordion-collapse collapse" aria-labelledby="heading{{ key }}" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    {% if entity.field_merger_left_repeater_descr.value %}
+                                    {{ entity.field_merger_left_repeater_descr.value|raw }}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="merger_left">
+            <h4>{{paragraph.field_merger_main_right_heading.value|raw}}</h4>
+            <div class="accordion" id="accordionExample2">
+                    {% for key, item in paragraph.field_merger_right_repeater %}
+                    {% set entity = item.entity %}
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading1{{ key }}">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1{{ key }}" aria-expanded="true" aria-controls="collapse1{{ key }}">
+                                {% if entity.field_merger_right_heading.value %}
+                                    {{ entity.field_merger_right_heading.value|raw }}
+                                {% endif %}
+                                </button>
+                            </h2>
+                            <div id="collapse1{{ key }}" class="accordion-collapse collapse" aria-labelledby="heading1{{ key }}" data-bs-parent="#accordionExample2">
+                                <div class="accordion-body">
+                                    {% if entity.field_merger_right_description.value %}
+                                    {{ entity.field_merger_right_description.value|raw }}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+<section class="b01">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="board_left">
+					<h1>Board of Directors</h1>
+				</div>
+			</div>
+			<div class="col-md-8">
+				<div class="board_right">
+					{# {% for boardDescriptionItem in paragraph.field_board_description %}
+                    <h4 class="wp-block-heading">
+                        {{ boardDescriptionItem.value|raw }}
+                    </h4>
+                {% endfor %}
+                    {{dump(paragraph.field_board_description.entity.entity)}} #}
+
+                    
+				</div>
+			</div>
+
+		</div>
+	</div>
+</section>
+<section class="single_director">
+	<div class="container">
+		{% for key, item in paragraph.field_team_main %}
+			{% set entity = item.entity %}
+			<div class="row">
+				<div class="col-md-3">
+					<div class="sdir_left">
+						<div class="sdir_img">
+							{% if entity.field_board_member_image.entity %}
+								{% set media_entity = entity.field_board_member_image.entity %}
+								{% set image_url = file_url(media_entity.field_media_image.entity.uri.value) %}
+								<img src="{{ image_url }}" alt="image">
+							{% endif %}
+						</div>
+					</div>
+				</div>
+				<div class="col-md-9">
+					<div class="sdir_right">
+						{% if entity.field_board_member_description.value %}
+							{{ entity.field_board_member_description.value|raw }}
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+</section>

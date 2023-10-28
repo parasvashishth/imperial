@@ -1,0 +1,51 @@
+
+{% include directory ~ '/templates/includes/header.html.twig' %}
+
+
+<section class="newsP">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="newsPH">
+					<h4>News & Media</h4>
+				</div>
+			</div>
+
+			<div class="col-md-12">
+				<div class="newsPageOuter">
+					<div class="newsPageowl">
+
+						<div class="newsPageowlOuter">
+							<div class="row"> 
+								<div class="col-md-6">
+                                    <div class="newsPageowlInnerImg">
+                                        {% if node.field_blog_image.entity %}
+                                            {% set media_entity = node.field_blog_image.entity %}
+                                            {% if media_entity.bundle() == 'image' %}
+                                                {% if media_entity.hasField('field_media_image') %}
+                                                {% set image_entity = media_entity.field_media_image.entity %}
+                                                {% if image_entity %}
+                                                    <img src="{{ file_url(image_entity.uri.value) }}" alt="{{ media_entity.field_media_image.alt }}" />
+                                                {% endif %}
+                                                {% endif %}
+                                            {% endif %}
+                                            {% endif %}
+
+                                    </div>
+                                </div>
+								<div class="col-md-6">
+									<div class="newsPageowlInnerCont">
+									<h1>{{ node.title.value }}</h1>
+									{{ node.body.value|raw }}
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section> 
+
+{% include directory ~ '/templates/includes/footer.html.twig' %}

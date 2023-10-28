@@ -1,0 +1,47 @@
+{% if paragraph.field_about_content.value  %}
+<section class="aboutUs">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="aboutUsLeft">
+					  {{paragraph.field_about_content.value|raw}}
+					<a href="{{ paragraph.field_about_link.uri }}" class="btnImperial blueImp">Know more</a>
+				</div>
+			</div>
+
+			<div class="col-md-6">
+				<div class="aboutUsRight">
+				{% for key, item in paragraph.field_about_pointers_wrapper %}
+					{% set entity = item.entity %}
+						<div class="aboutRightBox">
+							<div class="aboutRightFlexBox">
+								<div class="aboutRightBoxImg">
+									<a href="https://imperialauto.in/product_range/on-highway/">
+								{% if entity.field_about_icon.entity %}
+									{% set media_entity = entity.field_about_icon.entity %}
+									{% set image_url = file_url(media_entity.field_media_image.entity.uri.value) %}
+									<img src="{{ image_url }}" alt="">
+								{% endif %}
+
+									</a>
+								</div>
+									<div class="aboutRightBoxHead">
+									{% if entity.field_about_icon_content.value %}
+										{{ entity.field_about_icon_content.value|raw }}
+									{% endif %}
+								</div>
+								
+							</div>
+							
+						</div>
+					{% endfor %}
+
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+</section>
+
+{% endif %}

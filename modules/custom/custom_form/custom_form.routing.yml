@@ -1,0 +1,7 @@
+custom_form.custom_form:
+ path: '/simple-custom-form'
+ defaults:
+   _title: 'REGISTRATION PAGE'
+   _form: '\Drupal\custom_form\Form\SimpleRegistrationForm'
+ requirements:
+   _access: 'TRUE'

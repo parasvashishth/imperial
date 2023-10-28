@@ -1,0 +1,103 @@
+{% include directory ~ '/templates/includes/header.html.twig' %}
+<section class="newsMainPage">
+	<div class="mission_three">
+		<nav>
+			<div class="nav nav-tabs" id="nav-tab" role="tablist">
+				<button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true" style="height:100%;"><h1 class="headingH1">News</h1></button>
+				<button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Media</button>
+				<button class="nav-link" id="nav-blog-tab" data-bs-toggle="tab" data-bs-target="#nav-blog" type="button" role="tab" aria-controls="nav-blog" aria-selected="false">Blog</button>
+			</div>
+		</nav>
+		<div class="tab-content" id="nav-tabContent">
+			<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+				<div class="newsPgCont">
+					<div class="container">
+						<div class="row">
+							{{page.content}}
+					    </div>
+					</div>
+				</div>
+			</div>
+			<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+				<div class="media_main">
+					<div class="container">
+						<div class="row">
+							{# {{ drupal_view('my_view', 'block_1') }} #}
+							{{ drupal_view('latest_media', 'block_1') }}
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			
+			
+				<div class="tab-pane fade" id="nav-blog" role="tabpanel" aria-labelledby="nav-blog-tab" tabindex="0">
+				<div class="media_main">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-4">
+								<div class="news_box">
+									<div class="news_img">
+										<a href="https://imperialauto.in/blog/revolutionising-the-art-of-power-steering-with-imperial-auto/">
+											<img src="https://imperialauto.in/wp-content/uploads/2023/09/modern-car-steering-wheel_526x429.jpg" alt="">
+										</a>
+									</div>
+									<div class="news_content">
+										<span>Blog</span>
+										
+										<a href="https://imperialauto.in/blog/revolutionising-the-art-of-power-steering-with-imperial-auto/"><h4>Revolutionising the Art of Power Steering with Imperial Auto</h4></a>
+										<p class="blog_date">Sep 25, 2023</p>
+										<p>Introduction Imperial Auto has established itself as a leader in quality and...</p>
+
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="news_box">
+									<div class="news_img">
+										<a href="https://imperialauto.in/blog/hydraulic-hose-maintenance-guide-prolonging-performance/">
+											<img src="https://imperialauto.in/wp-content/uploads/2023/09/protection-hoses-pressure-tubes-binding-corrugated-cables-engine-wires-arrangement_1_527x429.jpg" alt="">
+										</a>
+									</div>
+									<div class="news_content">
+										<span>Blog</span>
+										
+										<a href="https://imperialauto.in/blog/hydraulic-hose-maintenance-guide-prolonging-performance/"><h4>Hydraulic Hose Maintenance Guide: Prolonging Performance</h4></a>
+										<p class="blog_date">Sep 18, 2023</p>
+										<p>Introduction The hydraulic system serves as a key component in the complex...</p>
+
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="news_box">
+									<div class="news_img">
+										<a href="https://imperialauto.in/blog/hydraulic-power-steering-operation-and-mechanics-explained/">
+											<img src="https://imperialauto.in/wp-content/uploads/2023/09/car.jpg" alt="">
+										</a>
+									</div>
+									<div class="news_content">
+										<span>Blog</span>
+										
+										<a href="https://imperialauto.in/blog/hydraulic-power-steering-operation-and-mechanics-explained/"><h4>Hydraulic Power Steering: Operation and Mechanics Explained</h4></a>
+										<p class="blog_date">Sep 18, 2023</p>
+										<p>Introduction The hydraulic power steering system from Imperial Auto is the apex...</p>
+
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			
+			
+
+		</div>
+	</div>
+</section>
+
+
+{% include directory ~ '/templates/includes/footer.html.twig' %}

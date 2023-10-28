@@ -1,0 +1,184 @@
+{% include directory ~ '/templates/includes/header.html.twig' %}
+
+<section class="mvpage">
+	<div class="mission_three">
+		<nav>
+			<div class="nav nav-tabs" id="nav-tab" role="tablist">
+				<button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">History</button>
+				<button class="nav-link" id="mission-vision" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
+					<h1 class="headingH1">Mission & Vision</h1>
+				</button>
+				<button class="nav-link" id="core-values" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Core Values</button>
+			</div>
+		</nav>
+		<div class="tab-content" id="nav-tabContent">
+			<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+				<div class="historyCont" style="background:linear-gradient(0deg, #0b3a58, #0175bf);">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="milestones">
+									<ul>
+									 {% if node.field_history_page_content.entity %}
+										{% for paragraph_item in node.field_history_page_content %}
+											{% set paragraph_entity = paragraph_item.entity %}
+											{% if paragraph_entity.bundle == 'miletones_content_wrap' %}
+										<li data-aos="fade-up" data-aos-anchor-placement="center-bottom">
+											<div class="mileCont">
+												{% if paragraph_entity.field_miletones_content %}
+													{{ paragraph_entity.field_miletones_content.value|raw }}
+												{% endif %}
+										</li>
+										{% endif %}
+										{% endfor %}
+										{% endif %}
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="mission-vision" tabindex="0">
+				<div class="mis_hist_cont">
+					<div class="container">
+					{% if node.field_vision_mission_content.entity %}
+					{% for paragraph_item in node.field_vision_mission_content %}
+						{% set paragraph_entity = paragraph_item.entity %}
+						{% if paragraph_entity.bundle == 'vision_mission_wrap' %}
+						<div class="row">
+							<div class="col-md-3">
+								<div class="misHead">
+								{% if paragraph_entity.field_mision_title %}
+									<h2>{{ paragraph_entity.field_mision_title.value|raw }}</h2>
+								{% endif %}
+								</div>
+							</div>
+							<div class="col-md-9">
+								<div class="misContent">
+								{% if paragraph_entity.field_mission_description_ %}
+									{{ paragraph_entity.field_mission_description_.value|raw }}
+								{% endif %}
+								</div>
+							</div>
+						</div>
+						{% endif %}
+						{% endfor %}
+						{% endif %}
+
+						{% if node.field_vision_mission_content.entity %}
+						{% for paragraph_item in node.field_vision_mission_content %}
+						{% set paragraph_entity = paragraph_item.entity %}
+						{% if paragraph_entity.bundle == 'vision_mission_wrap' %}
+						<div class="row">
+							<div class="col-md-3">
+								<div class="misHead">
+								{% if paragraph_entity.field_vision_title %}
+									{{ paragraph_entity.field_vision_title.value|raw }}
+								{% endif %}
+								</div>
+							</div>
+							<div class="col-md-9">
+								<div class="misContent">
+								{% if paragraph_entity.field_vision_description %}
+									{{ paragraph_entity.field_vision_description.value|raw }}
+								{% endif %}
+								</div>
+							</div>
+						</div>
+						{% endif %}
+						{% endfor %}
+						{% endif %}
+					<div class="row">
+						{% if node.field_vision_mission_content.entity %}
+						{% for paragraph_item in node.field_vision_mission_content %}
+							{% set paragraph_entity = paragraph_item.entity %}
+							{% if paragraph_entity.bundle == 'vision_mission_wrap' %}
+								{% for key, item in paragraph_entity.field_mission_main_pointers %}
+									{% set entity = item.entity %}
+										<div class="col-md-4">
+											<div class="vision_box">
+												<div class="vision_box_img">
+													{% if entity.field_mission_icon.entity %}
+													{% set media_entity = entity.field_mission_icon.entity %}
+													{% set image_url = file_url(media_entity.field_media_image.entity.uri.value) %}
+													<img src="{{ image_url }}" alt="mission-pointers">
+												{% endif %}
+												</div>
+													{% if entity.field_mission_icon_content.value %}
+														{{ entity.field_mission_icon_content.value|raw }}
+													{% endif %}											
+											</div>
+										</div>
+								{% endfor %}
+							{% endif %}
+						{% endfor %}
+					{% endif %}
+					</div>
+					</div>
+				</div>
+			</div>
+			{% if node.field_core_values_page.entity %}
+			{% for paragraph_item in node.field_core_values_page %}
+				{% set paragraph_entity = paragraph_item.entity %}
+				{% if paragraph_entity.bundle == 'core_values_wrap' %}
+			<div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="core-values" tabindex="0">
+				<div class="coreValuesPageSec">
+					<div class="container">
+						<div class="row mb-5">
+							<div class="col-md-4">
+							
+								<div class="board_left">
+								{% if paragraph_entity.field_core_value_title %}
+									<h4>{{ paragraph_entity.field_core_value_title.value|raw }}</h4>
+								{% endif %}
+								</div>
+							</div>
+
+							<div class="col-md-8">
+								<div class="board_right">
+								{% if paragraph_entity.field_core_value_description %}
+									{{ paragraph_entity.field_core_value_description.value|raw }}
+								{% endif %}
+								</div>
+							</div>
+
+						</div>
+
+						<div class="row justify-content-center">
+								{% if node.field_core_values_page.entity %}
+								{% for paragraph_item in node.field_core_values_page %}
+									{% set paragraph_entity = paragraph_item.entity %}
+									{% if paragraph_entity.bundle == 'core_values_wrap' %}
+										{% for key, item in paragraph_entity.field_core_values %}
+											{% set entity = item.entity %}
+													<div class="col-md-6">
+															{% if entity.field_core_values_image.entity %}
+															{% set media_entity = entity.field_core_values_image.entity %}
+															{% set image_icon_url = file_url(media_entity.field_media_image.entity.uri.value) %}
+															{% endif %}	
+														<div class="mis_box" style="background-image:url('{{image_icon_url}}');">
+															{% if entity.field_core_value_icon.entity %}
+															{% set media_entity = entity.field_core_value_icon.entity %}
+															{% set image_url = file_url(media_entity.field_media_image.entity.uri.value) %}
+															<img src="{{ image_url }}" alt="mission-pointers">
+															{% endif %}															{% if entity.field_core_value_content.value %}
+																{{ entity.field_core_value_content.value|raw }}
+															{% endif %}	
+														</div>
+													</div>
+										{% endfor %}
+									{% endif %}
+								{% endfor %}
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+			{% endif %}
+			{% endfor %}
+			{% endif %}
+		</div>
+	</div>
+</section>
+{% include directory ~ '/templates/includes/footer.html.twig' %}

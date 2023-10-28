@@ -1,0 +1,15 @@
+services:
+  media_download.media_settings_override:
+    class: '\Drupal\media_download\MediaSettingsOverride'
+    tags:
+      - { name: config.factory.override, priority: 10 }
+  media_download.page_cache_response_policy:
+    class: '\Drupal\media_download\PageCacheResponsePolicy'
+    public: false
+    tags:
+      - { name: page_cache_response_policy }
+      - { name: dynamic_page_cache_response_policy }
+  media_download.route_subscriber:
+    class: '\Drupal\media_download\RouteSubscriber'
+    tags:
+      - { name: event_subscriber }

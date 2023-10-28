@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * @file
+ * This module holds functions useful for Common functions for complet site .
+ */
+use Drupal\nestle_common\Controller\CommonFunc;
+use Drupal\node\Entity\Node;
+
+/**
+ * Implements hook_theme().
+ */
+function imperial_product_theme() {
+	return [
+			'GlobalSearchPage' => [
+				'template' => 'product-template',
+				'variables' => [
+					'data' => NULL,
+					'count' =>NULL
+				],
+			],
+	];
+}

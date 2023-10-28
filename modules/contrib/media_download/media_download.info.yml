@@ -1,0 +1,16 @@
+name: 'Media Download'
+description: 'Adds support for direct downloads of media entities when using their canonical path.'
+
+core_version_requirement: '^9.3 || ^10'
+type: module
+
+php: '7.4'
+
+dependencies:
+  - drupal:file
+  - drupal:media
+
+# Information added by Drupal.org packaging script on 2022-12-20
+version: '1.3.x-dev'
+project: 'media_download'
+datestamp: 1671570733

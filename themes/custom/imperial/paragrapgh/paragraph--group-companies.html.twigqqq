@@ -1,0 +1,32 @@
+
+  {% block paragraph %}
+  {% block content %}
+		<div class="row">
+    {# {{dump(content)}}
+    {{ content }} #}
+			 <div class="col-md-8">  
+				<div class="groupBoxLeft">
+					     {{paragraph.field_group_left_content.value|raw}}
+         		 </ul>
+				</div>
+			</div>
+			<div class="col-md-4">
+      				<div class="groupBoxRt">
+     				 {% for item in paragraph.field_team_image %}
+						{% if item.entity %}
+							{% set media_entity = item.entity %}
+							{% if media_entity.bundle() == 'image' %}
+								{% if media_entity.hasField('field_media_image') %}
+									{% set image_entity = media_entity.field_media_image.entity %}
+									{% if image_entity %}
+										<img src="{{ file_url(image_entity.uri.value) }}" alt="{{ media_entity.field_media_image.alt }}">
+									{% endif %}
+								{% endif %}
+							{% endif %}
+						{% endif %}
+					{% endfor %}
+				</div>
+			</div> 
+		</div>
+    {% endblock %}
+    {% endblock paragraph %}

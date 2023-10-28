@@ -1,0 +1,29 @@
+{% include directory ~ '/templates/includes/header.html.twig' %}
+
+
+<section class="about">
+	<div class="shape shape1">
+		<img src="https://imperialauto.in/wp-content/uploads/2022/10/shape-1-1.png" alt="ring shape">
+	</div>
+	<div class="shape shape2">
+		<img src="https://imperialauto.in/wp-content/uploads/2022/10/shape-2.png" alt="half circle">
+	</div>
+	<div class="shape shape3">
+		<img src="https://imperialauto.in/wp-content/uploads/2022/10/Ellipse-1.png" alt="small circle">
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="about_content">
+				    {% if node.field_about_page_content %}
+                        {{ node.field_about_page_content.value|raw}}
+                    {% endif %}
+				</div>
+
+			</div>
+		</div>
+	</div>
+</section>
+
+
+{% include directory ~ '/templates/includes/footer.html.twig' %}

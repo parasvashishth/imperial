@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Hook implementations for this module.
+ *
+ * Copyright (C) 2021  Library Solutions, LLC (et al.).
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function media_download_form_media_settings_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  \Drupal::messenger()->addWarning(t('%label has been overridden to facilitate direct file downloads for media entities. Changes to this value will not exhibit any effect while the Media Download module is installed.', [
+    '%label' => $form['security']['standalone_url']['#title'] ?? t('Standalone media URL'),
+  ]));
+}

@@ -1,0 +1,16 @@
+custom_form.custom_form:
+  description: 'Custom Form Example Data Table'
+  fields:
+    id:
+      type: serial
+      description: 'Primary Key: Unique ID for each entry.'
+    name:
+      type: varchar
+      length: 255
+      description: 'Name field from the form.'
+    email:
+      type: varchar
+      length: 255
+      description: 'Email field from the form.'
+  primary key:
+    id
